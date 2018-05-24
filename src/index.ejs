@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title><%= htmlWebpackPlugin.options.title %></title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/webcomponentsjs/1.2.0/custom-elements-es5-adapter.js"></script>
+    <style>
+    body {
+      background-color: #fafafa;
+    }
+    .container {
+        width: 90%;
+        margin: 30px auto;
+    }
+    </style>
+  </head>
+  <body>
+    <!-- Application mounting point -->
+    <% function createAttribute(item) { %>
+      <%= item.name %>=<%= item.value %>
+    <% } %>
+    <<%= htmlWebpackPlugin.options.tagName %>
+    <% if(htmlWebpackPlugin.options.attributes){ %>
+      <% htmlWebpackPlugin.options.attributes.map(createAttribute) %>
+    <% } %>
+    ></<%= htmlWebpackPlugin.options.tagName %>>
+  </body>
+</html>
