@@ -2,24 +2,29 @@ import { store } from 'domain/store/main';
 import render from 'renderer';
 import { updateCustomElementAttributes } from 'domain/store/reducers/main';
 import exoElementConfig from '../exo-element.config';
+import { map, each } from 'lodash';
 
 class ExoElement extends HTMLElement {
+
   static get observedAttributes() {
-    return ['hello', 'world'];
+    return map(exoElementConfig.attributes, 'name');
   }
+
   constructor() {
     super();
     render();
     this.render();
   }
+
   render () {
     store.addWatch('renderLoop', render);
-    updateCustomElementAttributes({
-      hello: this.getAttribute('hello'),
-      world: this.getAttribute('world')
-    });
+    let obj = {};
+    each(exoElementConfig.attributes, function (attr) {
+      obj[attr.name] = attr.value;
+    })
+    updateCustomElementAttributes(obj);
   }
+
 }
 
 window.customElements.define(exoElementConfig.name, ExoElement);
-
