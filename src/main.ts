@@ -19,9 +19,10 @@ class ExoElement extends HTMLElement {
   render () {
     store.addWatch('renderLoop', render);
     let obj = {};
-    updateCustomElementAttributes(
-      each(exoElementConfig.attributes,
-           function(attr) { obj[attr.name] = attr.value }));
+    each(exoElementConfig.attributes, function (attr) {
+      obj[attr.name] = attr.value;
+    })
+    updateCustomElementAttributes(obj);
   }
 
 }
