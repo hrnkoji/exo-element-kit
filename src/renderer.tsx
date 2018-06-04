@@ -9,7 +9,7 @@ const logger = getLogger('Renderer');
 export default function render() {
   logger.time('DOM Render');
   ReactDOM.render(<App />, document.getElementsByTagName(config.name)[0]);
-  logger.timeEnd('DOM Rendered');
+  logger.timeEnd('DOM Render');
 }
 
 declare const module: {
