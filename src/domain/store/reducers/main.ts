@@ -11,5 +11,5 @@ export function updateQuote(item: Quote) {
 
 export function updateCustomElementAttributes(attributes: any) {
   logger.debug(`Update custom attributes ${attributes}`);
-  return store.swap(oldState => ({ ...oldState,  attributes: { ...attributes }}));
+  return store.swap(oldState => ({ ...oldState, attributes: { ...attributes } }));
 }

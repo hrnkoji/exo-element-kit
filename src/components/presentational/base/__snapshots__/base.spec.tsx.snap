@@ -23,7 +23,7 @@ exports[`Renders correctly with default data 1`] = `
       className="MuiCardActions-root-54"
     >
       <button
-        className="MuiButtonBase-root-72 MuiButton-root-56 MuiButton-sizeSmall-69 MuiCardActions-action-55 sc-bdVaJa jSGSBg"
+        className="MuiButtonBase-root-72 MuiButton-root-56 MuiButton-sizeSmall-69 MuiCardActions-action-55 sc-bdVaJa bHCexJ"
         disabled={false}
         onBlur={[Function]}
         onClick={[Function]}
@@ -42,7 +42,7 @@ exports[`Renders correctly with default data 1`] = `
         <span
           className="MuiButton-label-57"
         >
-          Get Quote  
+          Get Quote 
           <svg
             aria-hidden="true"
             className="MuiSvgIcon-root-75"
