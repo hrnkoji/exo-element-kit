@@ -5,7 +5,6 @@ import exoElementConfig from '../exo-element.config';
 import { map, each } from 'lodash';
 
 class ExoElement extends HTMLElement {
-
   static get observedAttributes() {
     return map(exoElementConfig.attributes, 'name');
   }
@@ -16,15 +15,14 @@ class ExoElement extends HTMLElement {
     this.render();
   }
 
-  render () {
+  render() {
     store.addWatch('renderLoop', render);
     let obj = {};
-    each(exoElementConfig.attributes, function (attr) {
+    each(exoElementConfig.attributes, function(attr) {
       obj[attr.name] = attr.value;
-    })
+    });
     updateCustomElementAttributes(obj);
   }
-
 }
 
 window.customElements.define(exoElementConfig.name, ExoElement);
