@@ -10,4 +10,3 @@ export async function getQuote() {
     return resp.json();
   } else throw new TypeError('getQuote response is not Ok');
 }
-

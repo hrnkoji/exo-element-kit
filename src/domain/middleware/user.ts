@@ -1,12 +1,12 @@
 import { getLogger } from 'domain/logger';
 import { getQuote } from 'domain/middleware/network';
 import { updateQuote } from 'domain/store/reducers/main';
-import { Quote } from 'domain/store/main'
+import { Quote } from 'domain/store/main';
 
 const logger = getLogger('@middleware/user');
 
-export async function onClickGetQuote() {
+export async function onClickGetQuote(store: any) {
   logger.debug('List from network');
   const data = await getQuote();
-  updateQuote(data);
+  updateQuote(store, data);
 }
