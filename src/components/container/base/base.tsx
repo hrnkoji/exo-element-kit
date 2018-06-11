@@ -2,6 +2,8 @@ import * as React from 'react';
 import { State } from 'domain/store/main';
 import { onClickGetQuote } from 'domain/middleware/user';
 import Button from '@material-ui/core/Button';
+import Replay from '@material-ui/icons/Replay';
+import Face from '@material-ui/icons/Face';
 import FormatQuote from '@material-ui/icons/FormatQuote';
 import Card from '@material-ui/core/Card';
 import CardActions from '@material-ui/core/CardActions';
