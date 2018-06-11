@@ -47,7 +47,6 @@ class ExoElement extends HTMLElement {
   render() {
     this.store.addWatch('renderLoop', () => renderReact(this, state(this.store)));
     this.setAttributes();
-    renderReact(this, state(this.store));
   }
 }
 
