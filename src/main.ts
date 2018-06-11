@@ -1,11 +1,12 @@
 import { state, defaultState } from 'domain/store/main';
-import renderReact from 'renderer';
+import render from 'renderer';
 import { updateCustomElementAttributes } from 'domain/store/reducers/main';
 import exoElementConfig from '../exo-element.config';
-import { map, each, reduce, set } from 'lodash';
+import { map, each, reduce, set, partial } from 'lodash';
 import { createAtom } from 'js-atom';
 
 class ExoElement extends HTMLElement {
+
   store: any;
 
   static get observedAttributes() {
@@ -15,7 +16,9 @@ class ExoElement extends HTMLElement {
   constructor() {
     super();
     this.store = createAtom(defaultState);
-    this.waitForCustomElement(exoElementConfig.name, 10).then(() => this.render());
+    this.store.addWatch('renderLoop', partial(render, this));
+    this.waitForCustomElement(exoElementConfig.name, 10)
+      .then(() => this.setAttributes());
   }
 
   waitForCustomElement(tagName: string, milliseconds: number): Promise<boolean> {
@@ -43,11 +46,7 @@ class ExoElement extends HTMLElement {
     );
     updateCustomElementAttributes(this.store, attributes);
   }
-
-  render() {
-    this.store.addWatch('renderLoop', () => renderReact(this, state(this.store)));
-    this.setAttributes();
-  }
+  
 }
 
 window.customElements.define(exoElementConfig.name, ExoElement);

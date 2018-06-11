@@ -1,6 +1,4 @@
 import * as React from 'react';
-import { State } from 'domain/store/main';
-import { onClickGetQuote } from 'domain/middleware/user';
 import Button from '@material-ui/core/Button';
 import Replay from '@material-ui/icons/Replay';
 import Face from '@material-ui/icons/Face';
@@ -22,10 +20,13 @@ const StyledButton = styled(Button)`
   }
 `;
 
-type BaseProps = {
-  state: State;
+type QuoteCardProps = {
+  state: { quote: { quote: string, author: string }},
+  // FIXME  any: it should MouseEvent but it breaks.
+  onClickGetQuote: (event: any) => void
 };
-export function Base({ state }: BaseProps) {
+
+export function QuoteCard({ state, onClickGetQuote }: QuoteCardProps) {
   return (
     <div>
       <Card>

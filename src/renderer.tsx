@@ -2,18 +2,11 @@ import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import { getLogger } from 'domain/logger';
 import { App } from 'components/container/app/app';
-import config from '../exo-element.config';
 
 const logger = getLogger('Renderer');
 
-export default function renderReact(target, state) {
+export default function render(target: HTMLElement & { store: any }) {
   logger.time('DOM Rendered');
-  ReactDOM.render(<App state={state} />, target);
+  ReactDOM.render(<App store={target.store} />, target);
   logger.timeEnd('DOM Rendered');
 }
-
-declare const module: {
-  hot: {
-    accept: (string, Function) => void;
-  };
-};

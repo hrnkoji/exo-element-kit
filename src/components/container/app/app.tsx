@@ -1,15 +1,21 @@
 import * as React from 'react';
-import { Base } from 'components/container/base/base';
-import { State } from 'domain/store/main';
+import { QuoteCard } from 'components/presentational/quote_card/quote_card';
+import { state } from 'domain/store/main';
+import { onClickGetQuote } from 'domain/middleware/user';
 import theme from 'components/styled/muitheme';
 import { MuiThemeProvider } from '@material-ui/core/styles';
+import { partial } from 'lodash';
 
-export function App({ state }: { state: State }) {
-  const content = <Base state={state} />;
+export function App({ store }: { store: any }) {
+
+  const _onClickGetQuote = partial(onClickGetQuote, store);
 
   return (
     <MuiThemeProvider theme={theme}>
-      <div className={`container`}>{content}</div>
+      <div className={`container`}>
+        <QuoteCard state={state(store)}
+                   onClickGetQuote={_onClickGetQuote} />
+      </div>
     </MuiThemeProvider>
   );
 }
