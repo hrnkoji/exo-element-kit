@@ -1,15 +1,14 @@
 import * as React from 'react';
 import Button from '@material-ui/core/Button';
-import Replay from '@material-ui/icons/Replay';
-import Face from '@material-ui/icons/Face';
 import FormatQuote from '@material-ui/icons/FormatQuote';
 import Card from '@material-ui/core/Card';
 import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
-import styled from 'styled-components';
 
-const StyledButton = styled(Button)`
+declare const styled: any;
+
+const StyledButton = styled.default(Button)`
   && {
     background-color: black;
     border-radius: 50px;

@@ -17,18 +17,13 @@ module.exports = {
     rules: [
       { test: /\.tsx?$/, loader: "awesome-typescript-loader" }
     ]
-  },
-  optimization: {
-    splitChunks: {
-      cacheGroups: {
-        commons: {
-          test: /[\\/]node_modules[\\/]/,
-          name: 'exo-element-kit',
-          chunks: 'all'
-        }
-      }
-    }
   }, 
+  externals: {
+    "react": "React",
+    "react-dom": "ReactDOM",
+    "lodash": "_",
+    "styled-components": "styled"
+  },
   plugins: [
     new HtmlWebpackPlugin({
       title: exoElementConfig.name,
