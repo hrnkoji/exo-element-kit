@@ -4,7 +4,7 @@
   "description": "",
   "main": "",
   "scripts": {
-    "build": "npm run test && webpack --config webpack.config.js --mode production",
+    "build": "webpack --config webpack.config.js --mode production",
     "start": "webpack-dev-server --content-base build --hot --inline --mode development",
     "format": "prettier --single-quote --print-width 120 --trailing-comma es5 --write 'src/**/*.{ts,tsx}'",
     "format-stage": "npm run format && git add ."

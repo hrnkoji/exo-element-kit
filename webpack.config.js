@@ -4,11 +4,10 @@ const exoElementConfig = require('./exo-element.config');
 
 module.exports = {
   entry: './src/main.ts',
-  devtool: 'source-map',
   output: {
     path: path.resolve(__dirname, "build"),
     publicPath: '/',
-    filename: "bundle.js"
+    filename: exoElementConfig.name + '.js'
   },
   resolve: {
     extensions: ['.ts', '.tsx', '.js', '.json'],
@@ -16,15 +15,26 @@ module.exports = {
   },
   module: {
     rules: [
-      { test: /\.tsx?$/, loader: "awesome-typescript-loader" },
-      { enforce: "pre", test: /\.js$/, loader: "source-map-loader" },
+      { test: /\.tsx?$/, loader: "awesome-typescript-loader" }
     ]
   },
+  optimization: {
+    splitChunks: {
+      cacheGroups: {
+        commons: {
+          test: /[\\/]node_modules[\\/]/,
+          name: 'exo-element-kit',
+          chunks: 'all'
+        }
+      }
+    }
+  }, 
   plugins: [
     new HtmlWebpackPlugin({
-    title: exoElementConfig.name,
-    template: path.resolve(__dirname, 'src', 'index.ejs'),
-    tagName: exoElementConfig.name,
-    attributes: exoElementConfig.attributes
-  })]
+      title: exoElementConfig.name,
+      template: path.resolve(__dirname, 'src', 'index.ejs'),
+      tagName: exoElementConfig.name,
+      attributes: exoElementConfig.attributes
+    })
+  ]
 };
