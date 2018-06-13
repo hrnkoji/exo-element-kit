@@ -1,12 +1,8 @@
-import * as React from 'react';
-import Button from '@material-ui/core/Button';
-import FormatQuote from '@material-ui/icons/FormatQuote';
-import Card from '@material-ui/core/Card';
-import CardActions from '@material-ui/core/CardActions';
-import CardContent from '@material-ui/core/CardContent';
-import Typography from '@material-ui/core/Typography';
-
-declare const styled: any;
+const Button = global['material-ui'].Button;
+const Card = global['material-ui'].Card;
+const CardContent = global['material-ui'].CardContent;
+const CardActions = global['material-ui'].CardActions;
+const Typography = global['material-ui'].Typography;
 
 const StyledButton = styled.default(Button)`
   && {
@@ -37,7 +33,7 @@ export function QuoteCard({ state, onClickGetQuote }: QuoteCardProps) {
         </CardContent>
         <CardActions>
           <StyledButton onClick={onClickGetQuote} size="small">
-            Get Quote <FormatQuote />
+            Get Quote
           </StyledButton>
         </CardActions>
       </Card>

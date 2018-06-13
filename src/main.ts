@@ -2,7 +2,6 @@ import { state, defaultState } from 'domain/store/main';
 import render from 'renderer';
 import { updateCustomElementAttributes } from 'domain/store/reducers/main';
 import exoElementConfig from '../exo-element.config';
-import { map, each, reduce, set, partial } from 'lodash';
 import { createAtom } from 'js-atom';
 
 class ExoElement extends HTMLElement {
@@ -10,13 +9,13 @@ class ExoElement extends HTMLElement {
   store: any;
 
   static get observedAttributes() {
-    return map(exoElementConfig.attributes, 'name');
+    return _.map(exoElementConfig.attributes, 'name');
   }
 
   constructor() {
     super();
     this.store = createAtom(defaultState);
-    this.store.addWatch('renderLoop', partial(render, this));
+    this.store.addWatch('renderLoop', _.partial(render, this));
     this.waitForCustomElement(exoElementConfig.name, 10)
       .then(() => this.setAttributes());
   }
@@ -39,9 +38,9 @@ class ExoElement extends HTMLElement {
 
   setAttributes() {
     // FIXME type any
-    const attributes: any = reduce(
+    const attributes: any = _.reduce(
       exoElementConfig.attributes,
-      (obj, attr) => set(obj, attr.name, this.getAttribute(attr.name)),
+      (obj, attr) => _.set(obj, attr.name, this.getAttribute(attr.name)),
       {}
     );
     updateCustomElementAttributes(this.store, attributes);

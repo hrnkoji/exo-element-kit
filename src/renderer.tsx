@@ -1,5 +1,3 @@
-import * as React from 'react';
-declare const ReactDOM : any;
 import { getLogger } from 'domain/logger';
 import { App } from 'components/container/app/app';
 

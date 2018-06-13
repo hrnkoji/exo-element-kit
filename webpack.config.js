@@ -5,7 +5,7 @@ const exoElementConfig = require('./exo-element.config');
 module.exports = {
   entry: './src/main.ts',
   output: {
-    path: path.resolve(__dirname, "build"),
+    path: path.resolve(__dirname, 'build'),
     publicPath: '/',
     filename: exoElementConfig.name + '.js'
   },
@@ -15,15 +15,9 @@ module.exports = {
   },
   module: {
     rules: [
-      { test: /\.tsx?$/, loader: "awesome-typescript-loader" }
+      { test: /\.tsx?$/, loader: 'awesome-typescript-loader' }
     ]
   }, 
-  externals: {
-    "react": "React",
-    "react-dom": "ReactDOM",
-    "lodash": "_",
-    "styled-components": "styled"
-  },
   plugins: [
     new HtmlWebpackPlugin({
       title: exoElementConfig.name,
