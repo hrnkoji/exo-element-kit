@@ -8,7 +8,11 @@ export function updateQuote(store: any, item: Quote) {
   return store.swap(oldState => ({ ...oldState, quote: item }));
 }
 
-export function updateCustomElementAttributes(store: any, attributes: any) {
-  logger.debug(`Update custom attributes ${attributes}`);
-  return store.swap(oldState => ({ ...oldState, attributes: { ...attributes } }));
+export function updateCustomElementAttribute(store: any, name: string, value: any) {
+  logger.debug('Update custom attribute', name, value);
+  return store.swap(oldState => {
+    var obj = {...oldState};
+    obj.attributes[name] = value;
+    return obj;
+  });
 }
