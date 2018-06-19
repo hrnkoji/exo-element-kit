@@ -15,9 +15,11 @@ class ExoElement extends HTMLElement {
   constructor() {
     super();
     this.store = createAtom(defaultState);
-    this.store.addWatch('renderLoop', _.partial(render, this));
+    const _render = _.partial(render, this);
+    this.store.addWatch('renderLoop', _render);
     this.waitForCustomElement(exoElementConfig.name, 10)
       .then(() => this.setAttributes());
+    if ((module as any).hot) (module as any).hot.accept('renderer.tsx', _render);
   }
 
   waitForCustomElement(tagName: string, milliseconds: number): Promise<boolean> {

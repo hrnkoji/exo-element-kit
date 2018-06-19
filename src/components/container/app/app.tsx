@@ -8,7 +8,6 @@ export function App({ store }: { store: any }) {
 
   const _onClickGetQuote = _.partial(onClickGetQuote, store);
 
-
   return (
     <MuiThemeProvider theme={theme}>
       <div className={`container`}>
