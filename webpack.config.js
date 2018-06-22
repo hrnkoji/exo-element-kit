@@ -7,7 +7,8 @@ module.exports = {
   output: {
     path: path.resolve(__dirname, 'build'),
     publicPath: '/',
-    filename: exoElementConfig.name + '.js'
+    filename: exoElementConfig.name + '.js',
+    jsonpFunction: exoElementConfig.name + '_JsonP' // avoids conflicts with other webpacks
   },
   resolve: {
     extensions: ['.ts', '.tsx', '.js', '.json'],
