@@ -11,7 +11,7 @@ export function updateQuote(store: any, item: Quote) {
 export function updateCustomElementAttribute(store: any, name: string, value: any) {
   logger.debug('Update custom attribute', name, value);
   return store.swap(oldState => {
-    var obj = {...oldState};
+    var obj = _.cloneDeep(oldState);
     obj.attributes[name] = value;
     return obj;
   });
